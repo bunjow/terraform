@@ -1,7 +1,7 @@
-variable "AWS_ACCESS_KEY" {
+variable "AWS_SHARED_CREDENTIALS_FILE" {
 }
 
-variable "AWS_SECRET_KEY" {
+variable "AWS_PROFILE" {
 }
 
 variable "AWS_REGION" {
@@ -11,8 +11,8 @@ variable "AWS_REGION" {
 variable "AMIS" {
   type = map(string)
   default = {
-    us-east-1 = "ami-0c37ee902a7924ed2"
-    us-east-2 = "ami-be7753db"
+    us-east-1 = "ami-0fc20dd1da406780b"
+    us-east-2 = "ami-0fc20dd1da406780b"
   }
 }
 
