@@ -1,6 +1,7 @@
 provider "aws" {
   region     = var.AWS_REGION
-  access_key = var.AWS_ACCESS_KEY
-  secret_key = var.AWS_SECRET_KEY
+  shared_credentials_file = var.AWS_SHARED_CREDENTIALS_FILE
+  profile                 = var.AWS_PROFILE
+  region                  = var.AWS_REGION
 }
 
