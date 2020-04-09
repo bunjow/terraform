@@ -37,7 +37,7 @@ resource "aws_subnet" "matt-pub-a" {
   availability_zone = "${var.AWS_REGION}a"
 
   tags = {
-    Name = "mattPub [var.AWS_REGION]a"
+    Name = "mattPub ${var.AWS_REGION}a"
   }
 }
 
@@ -48,7 +48,7 @@ resource "aws_subnet" "matt-pub-b" {
   availability_zone = "${var.AWS_REGION}b"
 
   tags = {
-    Name = "mattPub [var.AWS_REGION]b"
+    Name = "mattPub ${var.AWS_REGION}b"
   }
 }
 
@@ -59,7 +59,7 @@ resource "aws_subnet" "matt-pub-c" {
   availability_zone = "${var.AWS_REGION}c"
 
   tags = {
-    Name = "mattPub [var.AWS_REGION]c"
+    Name = "mattPub ${var.AWS_REGION}c"
   }
 }
 
@@ -72,7 +72,7 @@ resource "aws_subnet" "matt-pri-a" {
   availability_zone = "${var.AWS_REGION}a"
 
   tags = {
-    Name = "mattPri [var.AWS_REGION]a"
+    Name = "mattPri ${var.AWS_REGION}a"
   }
 }
 
@@ -83,7 +83,7 @@ resource "aws_subnet" "matt-pri-b" {
   availability_zone = "${var.AWS_REGION}b"
 
   tags = {
-    Name = "mattPri [var.AWS_REGION]b"
+    Name = "mattPri ${var.AWS_REGION}b"
   }
 }
 
@@ -94,7 +94,7 @@ resource "aws_subnet" "matt-pri-c" {
   availability_zone = "${var.AWS_REGION}c"
 
   tags = {
-    Name = "mattPri [var.AWS_REGION]c"
+    Name = "mattPri ${var.AWS_REGION}c"
   }
 }
 
