@@ -141,7 +141,7 @@ resource "aws_route_table_association" "matt-pub-c-a" {
 resource "aws_security_group" "allow-ssh" {
   vpc_id      = aws_vpc.matt.id
   name        = "allow-ssh"
-  description = "ssh from my home"
+  description = "ssh from home"
   egress {
     from_port   = 0
     to_port     = 0
