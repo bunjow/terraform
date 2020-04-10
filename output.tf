@@ -1,16 +1,16 @@
-output "exampleIPS" {
-  value = aws_instance.example.public_ip
+output "defaultNginxIPS" {
+  value = aws_instance.defaultNginx.public_ip
 }
 
-output "exampeARN" {
-  value = aws_instance.example.arn
+output "defaultNginxARN" {
+  value = aws_instance.defaultNginx.arn
 }
 
-output "MattInstanceIPS" {
-  value = aws_instance.MattInstance.public_ip
+output "MattApacheIPS" {
+  value = aws_instance.MattApache.public_ip
 }
 
-output "MattInstanceARN" {
-  value = aws_instance.MattInstance.arn
+output "MattApacheARN" {
+  value = aws_instance.MattApache.arn
 }
 

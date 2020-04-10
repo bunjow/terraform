@@ -3,13 +3,16 @@ resource "aws_key_pair" "mykey" {
   public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
-resource "aws_instance" "example" {
+resource "aws_instance" "defaultNginx" {
   ami           = var.AMIS[var.AWS_REGION]
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mykey.key_name
-
+  tags = {
+    Name = "defaultNginx"
+    Role = "Web"
+  }
   provisioner "file" {
-    source      = "script.sh"
+    source      = "Scripts/nginx.sh"
     destination = "/tmp/script.sh"
   }
   provisioner "remote-exec" {

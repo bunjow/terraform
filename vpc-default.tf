@@ -5,7 +5,7 @@
 # default VPC
 resource "aws_default_vpc" "default" {
   tags = {
-    Name = "DEFAULT VPC"
+    Name = "Default"
   }
 }
 

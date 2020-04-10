@@ -45,7 +45,7 @@ resource "aws_instance" "myfirstec2" {
 ##  vpc_security_group_ids = ["data.aws_security_group.sg.id"]
 
   tags = {
-    Name = "FilterExample"
+    Name = "Filtermatt"
   }
 }
 
