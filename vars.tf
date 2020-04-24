@@ -53,3 +53,8 @@ variable "http_inbound" {
   type        = list
   description = "list of http inbound cidr"
 }
+
+variable "INSTANCE_DEVICE_NAME" {
+  default = "/dev/xvdh"
+}
+

@@ -1,20 +1,17 @@
-resource "aws_key_pair" "mattkey" {
-  key_name   = "mattkey"
-  public_key = file(var.PATH_TO_MATT_PUBLIC_KEY)
-}
-
-resource "aws_instance" "MattApache" {
+resource "aws_instance" "MattNginx" {
   ami           = var.AMIS[var.AWS_REGION]
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mattkey.key_name
-  subnet_id     = aws_subnet.matt-pub-a.id
+  # the VPC subnet
+  subnet_id = aws_subnet.matt-pub-b.id
+  # the security group
+  ##  vpc_security_group_ids = [aws_security_group.example-instance.id]
   tags = {
-    Name = "MattWeb"
+    Name = "MattNginx"
     Role = "Web"
   }
-
   provisioner "file" {
-    source      = "Scripts/apache.sh"
+    source      = "Scripts/nginx.sh"
     destination = "/tmp/script.sh"
   }
   provisioner "remote-exec" {
@@ -29,4 +26,8 @@ resource "aws_instance" "MattApache" {
     user        = var.INSTANCE_USERNAME
     private_key = file(var.PATH_TO_MATT_PRIVATE_KEY)
   }
+}
+
+output "MattNginx" {
+  value = aws_instance.MattNginx.public_ip
 }

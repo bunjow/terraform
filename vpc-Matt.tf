@@ -15,9 +15,17 @@ resource "aws_vpc" "matt" {
   }
 }
 
-###################################
-# Public Subnets
-###################################
+
+##data "aws_vpc" "selected" {
+##	id = "${var.vpc_id}"
+##	filter {
+##		name ="tag:Name"
+##		values = ["matt"]
+##	}
+##}
+
+
+# Subnets
 resource "aws_subnet" "matt-pub-a" {
   vpc_id                  = aws_vpc.matt.id
   cidr_block              = "10.0.1.0/24"
@@ -51,9 +59,8 @@ resource "aws_subnet" "matt-pub-c" {
   }
 }
 
-########################################
-# Private Subnets
-########################################
+
+# matt subnets Private
 resource "aws_subnet" "matt-pri-a" {
   vpc_id                  = aws_vpc.matt.id
   cidr_block              = "10.0.4.0/24"
@@ -86,9 +93,8 @@ resource "aws_subnet" "matt-pri-c" {
     Name = "mattPri ${var.AWS_REGION}c"
   }
 }
-####################
+
 # Internet GW
-####################
 resource "aws_internet_gateway" "matt-gw" {
   vpc_id = aws_vpc.matt.id
 
@@ -96,9 +102,8 @@ resource "aws_internet_gateway" "matt-gw" {
     Name = "matt"
   }
 }
-#############################
-# route tables 
-#############################
+
+# route tables
 resource "aws_route_table" "matt-public" {
   vpc_id = aws_vpc.matt.id
   route {
@@ -110,6 +115,7 @@ resource "aws_route_table" "matt-public" {
     Name = "matt-public-1"
   }
 }
+
 
 # route associations public
 resource "aws_route_table_association" "matt-pub-a" {
