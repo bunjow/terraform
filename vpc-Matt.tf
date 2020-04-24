@@ -61,7 +61,7 @@ resource "aws_subnet" "matt-pub-c" {
 
 
 # matt subnets Private
-resource "aws_subnet" "matt-pri-a" {
+resource "aws_subnet" "matt-priv-a" {
   vpc_id                  = aws_vpc.matt.id
   cidr_block              = "10.0.4.0/24"
   map_public_ip_on_launch = "false"
@@ -72,7 +72,7 @@ resource "aws_subnet" "matt-pri-a" {
   }
 }
 
-resource "aws_subnet" "matt-pri-b" {
+resource "aws_subnet" "matt-priv-b" {
   vpc_id                  = aws_vpc.matt.id
   cidr_block              = "10.0.5.0/24"
   map_public_ip_on_launch = "false"
@@ -83,7 +83,7 @@ resource "aws_subnet" "matt-pri-b" {
   }
 }
 
-resource "aws_subnet" "matt-pri-c" {
+resource "aws_subnet" "matt-priv-c" {
   vpc_id                  = aws_vpc.matt.id
   cidr_block              = "10.0.6.0/24"
   map_public_ip_on_launch = "false"

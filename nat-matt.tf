@@ -1,5 +1,5 @@
 ###########################################################
-# NAT to open up matt-pri-* subnets to outbound internet trafic
+# NAT to open up matt-priv-* subnets to outbound internet trafic
 ###########################################################
 
 # nat gw
@@ -22,23 +22,23 @@ resource "aws_route_table" "matt-pri" {
   }
 
   tags = {
-    Name = "matt-private-1"
+    Name = "matt-priv-ate-1"
   }
 }
 
 # route associations private
-resource "aws_route_table_association" "matt-pri-1-a" {
-  subnet_id      = aws_subnet.matt-pri-a.id
+resource "aws_route_table_association" "matt-priv-1-a" {
+  subnet_id      = aws_subnet.matt-priv-a.id
   route_table_id = aws_route_table.matt-pri.id
 }
 
-resource "aws_route_table_association" "matt-pri-2-a" {
-  subnet_id      = aws_subnet.matt-pri-b.id
+resource "aws_route_table_association" "matt-priv-2-a" {
+  subnet_id      = aws_subnet.matt-priv-b.id
   route_table_id = aws_route_table.matt-pri.id
 }
 
-resource "aws_route_table_association" "matt-pri-3-a" {
-  subnet_id      = aws_subnet.matt-pri-c.id
+resource "aws_route_table_association" "matt-priv-3-a" {
+  subnet_id      = aws_subnet.matt-priv-c.id
   route_table_id = aws_route_table.matt-pri.id
 }
 
