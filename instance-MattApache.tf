@@ -9,7 +9,7 @@ resource "aws_instance" "MattApache" {
   key_name      = aws_key_pair.mattkey.key_name
   subnet_id     = aws_subnet.matt-pub-a.id
   tags = {
-    Name = "MattWeb"
+    Name = "MattApache"
     Role = "Web"
   }
 
