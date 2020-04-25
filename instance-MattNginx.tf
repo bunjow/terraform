@@ -6,7 +6,7 @@ resource "aws_instance" "MattNginx" {
   # the VPC subnet
   subnet_id = aws_subnet.matt-pub-b.id
   # the security group
-  vpc_security_group_ids = [aws_security_group.ssh-instance.id]
+ ## vpc_security_group_ids = [aws_security_group.ssh-instance.id]
   tags = {
     Name = "MattNginx"
     Role = "Web"
