@@ -23,3 +23,7 @@ resource "aws_instance" "defaultNginx" {
     private_key = file(var.PATH_TO_PRIVATE_KEY)
   }
 }
+
+output "defaultNginxIPS" {
+  value = aws_instance.defaultNginx.public_ip
+}

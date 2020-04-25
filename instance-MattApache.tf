@@ -1,5 +1,6 @@
 resource "aws_instance" "MattApache" {
-  ami           = var.AMIS[var.AWS_REGION]
+  #  ami           = var.AMIS[var.AWS_REGION]
+  ami           = data.aws_ami.latest-ubuntu.id
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mattkey.key_name
   subnet_id     = aws_subnet.matt-pub-a.id
