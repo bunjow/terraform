@@ -137,15 +137,28 @@ resource "aws_route_table_association" "matt-pub-c" {
 # lock off default Security Group, then add a new set
 # -----------------------------------------------------------
 
-resource "aws_default_security_group" "matt_default" {
+resource "aws_default_security_group" "sg-matt-default" {
   vpc_id = aws_vpc.matt.id
   ## tags   = "merge(map("Name","log-matt"), var.tags)"
-  tags = { Name = "matt-default" }
+  tags = { Name = "matt-default-sg" }
   ingress {
     protocol  = -1
     self      = true
     from_port = 0
     to_port   = 0
+  }
+  ingress {
+    protocol  = "TCP"
+    self      = true
+    from_port = 80
+    to_port   = 80
+  }
+  ingress {
+    protocol    = "TCP"
+    self        = true
+    from_port   = 22
+    to_port     = 22
+    cidr_blocks = var.ssh_inbound
   }
 
   egress {
@@ -159,37 +172,37 @@ resource "aws_default_security_group" "matt_default" {
 #############################################################
 # Data sources to get VPC and default security group details
 #############################################################
-data "aws_vpc" "default" {
-  default = true
-}
-
-data "aws_security_group" "default" {
-  name   = "default"
-  vpc_id = aws_vpc.matt.id
-}
-
-##output "MattDefaultSG" {
-##  value = data.aws_security_group.default.id
+##data "aws_vpc" "matt" {
+##  default = true
 ##}
-
+##
+##data "aws_security_group" "sg-matt" {
+##  name   = "default"
+##  vpc_id = aws_vpc.matt.id
+##}
+##
+##output "MattDefaultSG" {
+##  value = data.aws_security_group.sg-matt.id
+##}
+##
 #############################################################
 # Open up to home SSH and http
 #############################################################
-resource "aws_security_group_rule" "ssh" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = var.ssh_inbound
-  security_group_id = data.aws_security_group.default.id
-}
-
-resource "aws_security_group_rule" "http" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = var.http_inbound
-  security_group_id = data.aws_security_group.default.id
-}
-
+## resource "aws_security_group_rule" "allow-ssh" {
+##  type              = "ingress"
+##  from_port         = 22
+##  to_port           = 22
+##  protocol          = "tcp"
+##  cidr_blocks       = var.ssh_inbound
+##  security_group_id = data.aws_security_group.sg-matt.id
+##}
+##
+##resource "aws_security_group_rule" "http" {
+##  type              = "ingress"
+##  from_port         = 80
+##  to_port           = 80
+##  protocol          = "tcp"
+##  cidr_blocks       = var.http_inbound
+##  security_group_id = data.aws_security_group.sg-matt.id
+##}
+##

@@ -22,7 +22,7 @@ resource "aws_route_table" "matt-pri" {
   }
 
   tags = {
-    Name = "matt-priv-ate-1"
+    Name = "matt-private-1"
   }
 }
 

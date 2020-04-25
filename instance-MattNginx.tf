@@ -1,12 +1,12 @@
 resource "aws_instance" "MattNginx" {
-##  ami           = var.AMIS[var.AWS_REGION]
+  ##  ami           = var.AMIS[var.AWS_REGION]
   ami           = data.aws_ami.latest-ubuntu.id
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mattkey.key_name
   # the VPC subnet
   subnet_id = aws_subnet.matt-pub-b.id
   # the security group
-  ##  vpc_security_group_ids = [aws_security_group.example-instance.id]
+  vpc_security_group_ids = [aws_security_group.ssh-instance.id]
   tags = {
     Name = "MattNginx"
     Role = "Web"
