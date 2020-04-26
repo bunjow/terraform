@@ -61,3 +61,7 @@ variable "INSTANCE_DEVICE_NAME" {
 variable "RDS_PASSWORD" {
   default = "password"
 }
+
+variable "server_port" {
+  default = "80"
+}

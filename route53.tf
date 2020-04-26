@@ -46,23 +46,23 @@ resource "aws_route53_record" "MattApache-record" {
   records         = ["bunjow.com"]
 }
 
-resource "aws_route53_record" "defaultNginx-record" {
-  zone_id         = aws_route53_zone.bunjow.zone_id
-  name            = "defaultNginx.bunjow.com"
-  type            = "A"
-  ttl             = "300"
-  allow_overwrite = true
-  records         = [aws_instance.defaultNginx.public_ip]
-}
+##resource "aws_route53_record" "defaultNginx-record" {
+##  zone_id         = aws_route53_zone.bunjow.zone_id
+##  name            = "defaultNginx.bunjow.com"
+##  type            = "A"
+##  ttl             = "300"
+##  allow_overwrite = true
+##  records         = [aws_instance.defaultNginx.public_ip]
+##}
 
-resource "aws_route53_record" "MattNginx-record" {
-  zone_id         = aws_route53_zone.bunjow.zone_id
-  name            = "MattNginx.bunjow.com"
-  type            = "A"
-  ttl             = "300"
-  allow_overwrite = true
-  records         = [aws_instance.MattNginx.public_ip]
-}
+##resource "aws_route53_record" "MattNginx-record" {
+##  zone_id         = aws_route53_zone.bunjow.zone_id
+##  name            = "MattNginx.bunjow.com"
+##  type            = "A"
+##  ttl             = "300"
+##  allow_overwrite = true
+##  records         = [aws_instance.MattNginx.public_ip]
+##}
 
 resource "aws_route53_record" "MariadbConsole-record" {
   zone_id         = aws_route53_zone.bunjow.zone_id

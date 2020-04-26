@@ -148,10 +148,10 @@ resource "aws_default_security_group" "sg-matt-default" {
     to_port   = 0
   }
   ingress {
-    protocol  = "TCP"
-    self      = true
-    from_port = 80
-    to_port   = 80
+    protocol    = "TCP"
+    self        = true
+    from_port   = 80
+    to_port     = 80
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {

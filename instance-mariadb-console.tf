@@ -4,7 +4,7 @@ resource "aws_instance" "mariadb-console" {
   key_name      = aws_key_pair.mattkey.key_name
   subnet_id     = aws_subnet.matt-pub-c.id
   # the security group to grant 3306 access
-  vpc_security_group_ids = [aws_security_group.ssh-instance.id]
+  vpc_security_group_ids = [aws_security_group.allow-ssh.id]
   tags = {
     Name = "Mariadb"
     Role = "Console"

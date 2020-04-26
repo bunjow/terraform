@@ -4,6 +4,8 @@ resource "aws_instance" "MattApache" {
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mattkey.key_name
   subnet_id     = aws_subnet.matt-pub-a.id
+  # Apply role here. Example: s3 bucket:
+  # iam_instance_profile = aws_iam_instance_profile.s3-mybucket-role-instanceprofile.name
   tags = {
     Name = "MattApache"
     Role = "Web"
@@ -29,16 +31,16 @@ resource "aws_instance" "MattApache" {
 ################################
 #  Add EBS storage /dev/xvdh
 ###############################
-resource "aws_ebs_volume" "ebs-volume-1" {
-  availability_zone = "us-east-2a"
-  size              = 20
-  type              = "gp2"
-  tags = {
-    Name = "extra volume data"
-  }
-}
-resource "aws_volume_attachment" "ebs-volume-1-attachment" {
-  device_name = "/dev/xvdh"
-  volume_id   = aws_ebs_volume.ebs-volume-1.id
-  instance_id = aws_instance.MattApache.id
-}
+##resource "aws_ebs_volume" "ebs-volume-1" {
+##  availability_zone = "us-east-2a"
+##  size              = 20
+##  type              = "gp2"
+##  tags = {
+##    Name = "extra volume data"
+##  }
+##}
+##resource "aws_volume_attachment" "ebs-volume-1-attachment" {
+##  device_name = "/dev/xvdh"
+##  volume_id   = aws_ebs_volume.ebs-volume-1.id
+##  instance_id = aws_instance.MattApache.id
+##}
