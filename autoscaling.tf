@@ -1,6 +1,6 @@
 resource "aws_launch_configuration" "matt-launchconfig" {
-  name_prefix     = "matt-launchconfig"
-#  image_id        = var.AMIS[var.AWS_REGION]
+  name_prefix = "matt-launchconfig"
+  #  image_id        = var.AMIS[var.AWS_REGION]
   image_id        = data.aws_ami.latest-ubuntu.id
   instance_type   = "t2.micro"
   key_name        = aws_key_pair.mattkey.key_name
@@ -15,7 +15,7 @@ resource "aws_autoscaling_group" "matt-autoscaling" {
   min_size                  = 2
   max_size                  = 4
   health_check_grace_period = 300
-  health_check_type         = "ELB"  # if no elb then do "EC2"
+  health_check_type         = "ELB" # if no elb then do "EC2"
   load_balancers            = ["${aws_elb.matt-elb.name}"]
   force_delete              = true
 

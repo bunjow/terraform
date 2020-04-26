@@ -49,14 +49,14 @@ resource "aws_security_group" "allow-scaling-group" {
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks     = ["0.0.0.0/0"]
     security_groups = [aws_security_group.allow-ssh.id] # allowing access from our example instance
   }
-    ingress {
+  ingress {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    cidr_blocks = ["192.227.211.172/32"]
+    cidr_blocks     = ["192.227.211.172/32"]
     security_groups = [aws_security_group.allow-ssh.id] # allowing access from our example instance
   }
 
