@@ -65,3 +65,13 @@ variable "RDS_PASSWORD" {
 variable "server_port" {
   default = "80"
 }
+
+variable "ports" {
+  type = map(list(string))
+  default = {
+    "22" = [ "104.140.53.67/32", "107.173.59.69/32", "173.232.242.20/32", "192.227.211.172/32" ]
+    "443" = [ "0.0.0.0/0" ]
+    "80" = [ "0.0.0.0/0" ]
+
+  }
+}
