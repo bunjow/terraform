@@ -1,0 +1,1 @@
+../../data-ami-latest.tf

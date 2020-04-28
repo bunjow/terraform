@@ -44,3 +44,7 @@ resource "aws_instance" "MattApache" {
 ##  volume_id   = aws_ebs_volume.ebs-volume-1.id
 ##  instance_id = aws_instance.MattApache.id
 ##}
+
+output "MattApacheIP" {
+  value = aws_instance.MattApache.public_ip
+}

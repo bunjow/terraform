@@ -6,6 +6,6 @@ terraform {
 
     # Replace this with your DynamoDB table name!
     dynamodb_table = "matt-terraform-lock"
-   encrypt        = true
+    encrypt        = true
   }
 }
